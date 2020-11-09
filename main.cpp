@@ -1,28 +1,41 @@
 #include <iostream>
-using namespace std;
 
-int main()
-{
-    int a;
-    cout << "Enter your numbers\n";
+int main() {
 
-    cin >> a;
+    int sum = 0;
 
-    int min1 = a;
-    int min2 = a;
-    int sum = a;
-    -
-    while (sum <= 100)
-    {
-        cin >> a;
+    int input, min = INT_MAX, min1 = INT_MAX, i = 0;
 
-        sum +=  a;
+    std::cout << " enter your numbers\n";
+    while(sum <= 100) {
 
-        if (a < min) min1 = a;
-        if (a < min-1) min2 = a;
+        std::cin>>input;
+        sum += input;
+
+        if(input < min || i == 0){
+
+            min1 = min;
+            min = input;
+
+        } else if(input < min || i == 1){
+
+            min = 1;
+
+        }
+
+        i++;
+
     }
 
-    cout << "Min1 = " << min1 << "\n";
-    cout << "Min2 = " << min2 << "\n";
+    if(i > 1){
 
+        std::cout << "Sum is bigger than 100, two min numbers: " << min << "\t" << min1 << "\n";
+
+    } else{
+
+        std::cout << "Sum is bigger than 100, min number: " << min << "\n";
+
+    }
+
+    return 0;
 }
