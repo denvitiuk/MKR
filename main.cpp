@@ -1,41 +1,22 @@
 #include <iostream>
 
-int main() {
+class Object
+{
+public:
+    virtual const char* getName() { return "Phone"; } //  virtual
+};
 
-    int sum = 0;
+class Tablet: public Object
+{
+public:
+    virtual const char* getName() { return "Ipad"; }
+};
 
-    int input, min = INT_MAX, min1 = INT_MAX, i = 0;
-
-    std::cout << " enter your numbers\n";
-    while(sum <= 100) {
-
-        std::cin>>input;
-        sum += input;
-
-        if(input < min || i == 0){
-
-            min1 = min;
-            min = input;
-
-        } else if(input < min || i == 1){
-
-            min = 1;
-
-        }
-
-        i++;
-
-    }
-
-    if(i > 1){
-
-        std::cout << "Sum is bigger than 100, two min numbers: " << min << "\t" << min1 << "\n";
-
-    } else{
-
-        std::cout << "Sum is bigger than 100, min number: " << min << "\n";
-
-    }
+int main()
+{
+    Tablet Ipad;
+    Object &rObject = Ipad;
+    std::cout << "Tablet is " << rObject.getName() << '\n';
 
     return 0;
 }
