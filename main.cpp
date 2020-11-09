@@ -1,9 +1,28 @@
 #include <iostream>
+using namespace std;
 
 int main()
 {
-    for (int count = 0; count < 10; ++count)
-        std::cout << count << " ";
+    int a;
+    cout << "Enter your numbers\n";
 
-    return 0;
+    cin >> a;
+
+    int min1 = a;
+    int min2 = a;
+    int sum = a;
+    -
+    while (sum <= 100)
+    {
+        cin >> a;
+
+        sum +=  a;
+
+        if (a < min) min1 = a;
+        if (a < min-1) min2 = a;
+    }
+
+    cout << "Min1 = " << min1 << "\n";
+    cout << "Min2 = " << min2 << "\n";
+
 }
