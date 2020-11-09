@@ -1,38 +1,53 @@
 #include <iostream>
+#include <string>
 
 class Object
 {
-public:
-    virtual const char* getName() { return "Tablet"; } //  virtual
+protected:
+    std::string m_name;
 
+    Object(std::string name)
+            : m_name(name)
+    {
+    }
+
+public:
+    std::string getName() { return m_name; }
+    virtual const char* gadget() { return "???"; }
 };
-class Objects
+
+class Phone: public Object
 {
 public:
-    virtual const char* getName() { return "Phone"; } //  virtual
+    Phone(std::string name)
+            : Object(name)
+    {
+    }
+
+    virtual const char* gadget() { return "Iphone"; }
 };
 
 class Tablet: public Object
 {
 public:
-    virtual const char* getName() { return "Ipad"; }
-};
-class Phone: public Objects
-{
-public:
-    virtual const char* getName() { return "Iphone"; }
+    Tablet(std::string name)
+            : Object(name)
+    {
+    }
 
+    virtual const char* gadget() { return "Ipad"; }
 };
+
+void report(Object &object)
+{
+    std::cout << object.getName()  <<" " << object.gadget() << '\n';
+}
 
 int main()
 {
+    Phone phone("Phone is");
+    Tablet tablet("Tablet is");
 
-    Tablet Ipad;
-    Phone Iphone;
-    Object &rObject = Ipad;
-    Objects &rObjects = Iphone;
-    std::cout << "Tablet is " << rObject.getName() << '\n';
-    std::cout << "Phone is " << rObjects.getName() << '\n';
-
-    return 0;
+    report(phone);
+    report(tablet);
 }
